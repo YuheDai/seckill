@@ -16,6 +16,7 @@ import org.seckill.entity.Seckill;
 import org.seckill.exception.RepeatKillException;
 import org.seckill.exception.SeckillCloseException;
 import org.seckill.exception.SeckillException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -27,6 +28,7 @@ import java.util.List;
  * @author DaiYuHe
  * @since 1.0.0
  */
+@Service
 public interface SeckillService {
 
     /**
@@ -64,5 +66,19 @@ public interface SeckillService {
      * @throws RepeatKillException
      */
     SeckillExecution executeSeckill(long seckillId, long userPhone, String md5)
+            throws SeckillException, SeckillCloseException, RepeatKillException;
+
+    /**
+     * 执行秒杀工作
+     *
+     * @param seckillId
+     * @param userPhone
+     * @param md5
+     * @return
+     * @throws SeckillException
+     * @throws SeckillCloseException
+     * @throws RepeatKillException
+     */
+    SeckillExecution executeSeckillProcedure(long seckillId, long userPhone, String md5)
             throws SeckillException, SeckillCloseException, RepeatKillException;
 }
